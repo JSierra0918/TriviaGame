@@ -20,8 +20,8 @@ body {
 }
 
 .number-container {
-    background: pink;
-    height: 20vw;
+ border: 1px solid;
+     height: 20vw;
     width: 30vw;
     text-align: center;
 }
