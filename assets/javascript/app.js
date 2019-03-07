@@ -12,6 +12,7 @@ var totalQuestions = 10;
 //     q3 : "How long does it take a sloth to digest its food?"
 // };
 
+
 var question1 = {
     question: "Where is the heart of a shirimp located at?",
     answer: ["head", "body", "tail", "claw"],
@@ -30,6 +31,9 @@ var question3 = {
     correct: "Two weeks"
 };
 
+
+var questionsArray = [question1,question2,question3];
+
 for (var i = 0; i < totalQuestions.length; i++) {
 
 }
@@ -46,31 +50,40 @@ function generateQuestion() {
     //generate random question
     var questionTitle = $("#questionTitle");
 
+    //select a random question
+    var questionArrayRandomNum = Math.floor(Math.random() * questionsArray.length);
+    var questionArrayRandom = questionsArray[questionArrayRandomNum];
+    console.log(questionArrayRandom)
 
+    // get the ANSWER array from the question
+    var questionsLength = questionArrayRandom.answer.length;
+   
     //populate DOM with Text
-    questionTitle.text(question1.question);
-
-    //generate answers
-    for (var i = 0; i < question1.answer.length; i++) {
-        //reinitiliaze every loop
-
-        console.log(question1.answer[i]);
+    questionTitle.text(questionArrayRandom.question);
+ 
+    for (var i = 0; i < questionsLength; i++) {
+        
+        console.log(questionArrayRandom.answer);
+        //reinitiliaze on every loop
         var answerElement = $("<div>");
-        var randomIndex = Math.floor(Math.random() * question1.answer.length);
+        var randomIndex = Math.floor(Math.random() * questionArrayRandom.answer.length);
 
-        answerElement.addClass("answer");
+        console.log(questionArrayRandom.answer[i]);
 
-        // $(".answer").text(question1.answer[i]);  
-        $(".answer").text(question1.answer[randomIndex]);
+        answerElement
+            .addClass("answer")
+            .text(questionArrayRandom.answer[randomIndex]);
 
         $(".question-container").append(answerElement);
 
         // remove answer after every loop
-      //  question1.answer.splice(randomIndex, 1);
+        questionArrayRandom.answer.splice(randomIndex, 1);
     }
 
 }
 
+
+//$(this).html() === questionArray.correct;
 generateQuestion();
 
 
