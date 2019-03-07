@@ -14,14 +14,14 @@ body {
 }
 
 .header-flex h1 {
-    font-size: 5vw;
+    font-size: 10vw;
     flex: 3;
     
 }
 
 .number-container {
- border: 1px solid;
-     height: 20vw;
+    background: pink;
+    height: 20vw;
     width: 30vw;
     text-align: center;
 }
@@ -32,28 +32,22 @@ body {
 }
 
 .question-container {
-    background: rgb(84, 71, 97);
+    background: rebeccapurple;
     text-align: center;
     width: 80vw;
     margin-top: 5vh;
 }
 
 .question-title {
-    font-size: 3vw;
+    font-size: 5vw;
     font-weight: bold;
 }
 
-.question {
+.answer {
     font-weight: bolder;
     color: red;
-}
-
-.answer {
-
-    border: 1px solid black;
-    font-size: 3vw;
     background: white;
-
+border: 1px solid black;
 }
 
 .answer:hover {
