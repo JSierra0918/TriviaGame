@@ -3,46 +3,68 @@
 var question1 = {
     question: "Where is the heart of a shirimp located at?",
     answer: ["head", "body", "tail", "claw"],
-    correct: "head"
+    correct: "head",
+    img: "./assets/images/confusedx640.gif"
 };
 
 var question2 = {
     question: "How many noses do slugs have?",
     answer: ["4", "3", "1", "2"],
-    correct: "4"
+    correct: "4",
+    img: "./assets/images/confusedx640.gif"
 };
 
 var question3 = {
     question: "How long does it take a sloth to digest its food?",
     answer: ["2 weeks", "1 week", "1 month", "16 hours"],
-    correct: "2 weeks"
+    correct: "2 weeks",
+    img: "./assets/images/confusedx640.gif"
 };
 
 //initialize variables
 
 var questionsArray = [question1, question2, question3];
+var questionArrayLength = questionsArray.length;
 var questionArrayRandom;
 var totalQuestions = 10;
 var questionsRight = 0;
 var questionsWrong = 0;
+var timeCount = 30;
+var timerID;
+
 
 for (var i = 0; i < totalQuestions.length; i++) {
 
 }
 
-function reset (){
+function reset() {
     var totalQuestions = 10;
     questionsArray = [question1, question2, question3];
 
 }
 
-function timer (){
+function timerCountDown() {
+    $("#timeID").text(timeCount);
+    timeCount--;
 
+    if (timeCount === 0) {
+        console.log("timer is at 0");
+        timeCount = 0;
+        clearInterval(timerID);
+        $("#timeID").text(timeCount);
+
+        // call next question
+        questionsWrong--;
+        transition();
+    }
 }
 
 function generateQuestion() {
-    //generate random question
-    var questionTitle = $("#questionTitle");
+    //Create a title element
+    var questionTitle = $("<h3>");
+    questionTitle
+        .addClass("question-title")
+        .attr("id", "questionTitle");
 
     //select a random question
     var questionArrayRandomNum = Math.floor(Math.random() * questionsArray.length);
@@ -50,15 +72,18 @@ function generateQuestion() {
     console.log(questionArrayRandom)
 
     // get the ANSWER array from the question
-    var questionsLength = questionArrayRandom.answer.length;
+    var answerLength = questionArrayRandom.answer.length;
 
     //populate DOM with Text
     questionTitle.text(questionArrayRandom.question);
+    $(".question-container").append(questionTitle);
 
     //generate random answers
-    for (var i = 0; i < questionsLength; i++) {
+    for (var i = 0; i < answerLength; i++) {
 
         console.log(questionArrayRandom.answer);
+
+
         //reinitiliaze on every loop
         var answerElement = $("<div>");
         var randomIndex = Math.floor(Math.random() * questionArrayRandom.answer.length);
@@ -77,30 +102,76 @@ function generateQuestion() {
     //remove question so it does not repeat
     questionsArray.splice(questionArrayRandomNum, 1);
     console.log(questionArrayRandomNum);
+    //start timer
 
 }
 
-function nextQuestion () {
-    //removes current answer class
+function transition() {
+    //stop timer
+    clearInterval(timerID);
+
+    //show loading/inbetwen images
+    var transitionImage = $("<div>");
+    transitionImage.addClass("transition-image");
+    $(".transition-image").attr("src", questionArrayRandom.img);
+    $(".img-container").append(transitionImage);
+    //show correct answer or wrong answer then go into generate next question.
+
+    //remove ansers
     $(".answer").remove();
+    $(".question-title").remove();
+
+    setTimeout(nextQuestion, 2000);
+    //change all references of nextQuestion to transtion
+
+}
+
+function congrats() {
+    var congrats = $("<h1>");
+    congrats
+        .addClass("correct")
+        .text("You got it right! Nice!");
+
+    $(".img-container").append(congrats);
+}
+
+function dang() {
+    var dang = $("<h1>");
+    dang
+        .addClass("incorrect")
+        .text("Sorry, wrong answer!");
+
+    $(".img-container").append(dang);
+}
+
+function nextQuestion() {
+    //removes current answer class
+    timerCount = 30;
+    $(".transition-image").remove();
+    $(".correct").remove();
+    $(".incorrect").remove();
     generateQuestion();
+    timerID = setInterval(timerCountDown, 1000);
     onClick();
 }
 
 //Click event with winning condition
-function onClick (){
+function onClick() {
     $(".answer").on("click", function () {
 
         if ($(this).html() === questionArrayRandom.correct) {
             console.log("win!");
-            questionsRight++
-            nextQuestion();
-        }else{
+            questionsRight++;
+            congrats();
+            transition();
+
+        } else {
             console.log("Wrong!");
             questionsWrong++;
-            nextQuestion();
+            dang();
+            transition();
         }
-    
+
         console.log("click");
     });
 }
@@ -109,6 +180,6 @@ function onClick (){
 //Generate Question
 generateQuestion();
 onClick();
-
+timerID = setInterval(timerCountDown, 1000);
 
 
