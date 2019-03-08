@@ -43,21 +43,6 @@ function reset() {
 
 }
 
-function timerCountDown() {
-    $("#timeID").text(timeCount);
-    timeCount--;
-
-    if (timeCount === 0) {
-        console.log("timer is at 0");
-        timeCount = 0;
-        clearInterval(timerID);
-        $("#timeID").text(timeCount);
-
-        // call next question
-        questionsWrong--;
-        transition();
-    }
-}
 
 function generateQuestion() {
     //Create a title element
@@ -109,11 +94,14 @@ function generateQuestion() {
 function transition() {
     //stop timer
     clearInterval(timerID);
+    timeCount = 30;
 
     //show loading/inbetwen images
-    var transitionImage = $("<div>");
-    transitionImage.addClass("transition-image");
-    $(".transition-image").attr("src", questionArrayRandom.img);
+    var transitionImage = $("<img> ");
+   transitionImage
+        .addClass("transition-image")
+        .attr("src", questionArrayRandom.img);
+    console.log(questionArrayRandom.img);
     $(".img-container").append(transitionImage);
     //show correct answer or wrong answer then go into generate next question.
 
@@ -146,13 +134,30 @@ function dang() {
 
 function nextQuestion() {
     //removes current answer class
-    timerCount = 30;
+    console.log(timeCount)
     $(".transition-image").remove();
     $(".correct").remove();
     $(".incorrect").remove();
     generateQuestion();
     timerID = setInterval(timerCountDown, 1000);
     onClick();
+}
+
+
+function timerCountDown() {
+    $("#timeID").text(timeCount);
+    timeCount--;
+
+    if (timeCount === 0) {
+        console.log("timer is at 0");
+        timeCount = 0;
+        clearInterval(timerID);
+        $("#timeID").text(timeCount);
+
+        // call next question
+        questionsWrong--;
+        transition();
+    }
 }
 
 //Click event with winning condition
