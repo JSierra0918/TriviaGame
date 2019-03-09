@@ -156,6 +156,7 @@ function timerCountDown() {
 
         // call next question
         questionsWrong--;
+        dang();
         transition();
     }
 }
