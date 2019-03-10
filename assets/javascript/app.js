@@ -1,24 +1,52 @@
 //Question objects
 
 var question1 = {
-    question: "Where is the heart of a shirimp located at?",
-    answer: ["head", "body", "tail", "claw"],
-    correct: "head",
-    img: "./assets/images/confusedx640.gif"
+    question: "Where did Forrest Gump get shot?",
+    answer: ["Buttocks", "Leg", "Hans", "Back"],
+    correct: "Buttocks",
+    img: "./assets/images/buttocks.gif"
 };
 
 var question2 = {
-    question: "How many noses do slugs have?",
-    answer: ["4", "3", "1", "2"],
-    correct: "4",
-    img: "./assets/images/confusedx640.gif"
+    question: "What did Conan the Barbarian do to get all his muscles?",
+    answer: ["Swing his sword", "Lift massive bolders", "Wheel of pain", "Run"],
+    correct: "Wheel of pain",
+    img: "./assets/images/wheelofpain.gif"
 };
 
 var question3 = {
-    question: "How long does it take a sloth to digest its food?",
-    answer: ["2 weeks", "1 week", "1 month", "16 hours"],
-    correct: "2 weeks",
-    img: "./assets/images/confusedx640.gif"
+    question: "Benjamin Budford tells Forrest how many ways can shirmp be prepared?",
+    answer: ["45", "35", "21", "18"],
+    correct: "21",
+    img: "./assets/images/shrimp.gif"
+};
+
+var question4 = {
+    question: "what's an action hero's greatest strength?",
+    answer: ["Grip strength", "One liners", "Always able to survie", "Charming looks"],
+    correct: "Grip strength",
+    img: "./assets/images/hero.gif"
+};
+
+var question5 = {
+    question: "Lloyd Christmas and Harry Dunne thought Aspen whas in what state?",
+    answer: ["Colorado", "California", "Washington", "Minnesota"],
+    correct:  "California",
+    img: "./assets/images/dumb.gif"
+};
+
+var question6 = {
+    question: "How many shots did John Wick fire in his house?",
+    answer: ["20", "19", "30", "5"],
+    correct:  "20",
+    img: "./assets/images/john.gif"
+};
+
+var question7 = {
+    question: "How old was Scarlet Johansson in Lost in Translation?",
+    answer: ["18", "21", "16", "27"],
+    correct:  "18",
+    img: "./assets/images/scar.gif"
 };
 
 //initialize variables
@@ -118,7 +146,7 @@ function congrats() {
     var congrats = $("<h1>");
     congrats
         .addClass("correct")
-        .text("You got it right! Nice!");
+        .text("Correct! The Answer was " + questionArrayRandom.correct);
 
     $(".img-container").append(congrats);
 }
@@ -127,7 +155,7 @@ function dang() {
     var dang = $("<h1>");
     dang
         .addClass("incorrect")
-        .text("Sorry, wrong answer!");
+        .text("Dang! The Answer was " + questionArrayRandom.correct);
 
     $(".img-container").append(dang);
 }

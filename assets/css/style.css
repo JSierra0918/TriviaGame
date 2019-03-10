@@ -16,7 +16,7 @@ body {
 .header-flex h1 {
     font-size: 10vw;
     flex: 3;
-    
+    font-family: 'Audiowide', cursive;
 }
 
 .number-container {
