@@ -1,0 +1,73 @@
+body {
+    background-color: #222;
+  }
+  #container {
+    position: relative;
+    width: 800px;
+    margin: 10% auto;
+    text-align: center;
+  }
+  #border {
+    width: 600px;
+    height: 150px;
+    background-color: #222;
+    border: 3px solid #0cd808;
+    position: absolute;
+    top: 28px;
+    border-radius: 10px;
+    left: 50%;
+    margin-left: -327px;
+    box-shadow: 0 0 1px #b3ff51, 0 0 2px #b3ff51, 0 0 6px #b3ff51, 0 0 12px #b3ff51, inset 0 0 1px #b3ff51, inset 0 0 2px #b3ff51, inset 0 0 6px #b3ff51, inset 0 0 12px #b3ff51;
+    z-index: -9990;
+  }
+  #blocker-1 {
+    width: 405px;
+    height: 30px;
+    position: absolute;
+    top: 20px;
+    left: 200px;
+    background-color: #222;
+    z-index: -9990;
+    box-shadow: 0 0 10px #222, 0 0 5px #222, 0 0 2px #222, 0 0 1px #222;
+  }
+  #blocker-2 {
+    width: 160px;
+    height: 30px;
+    position: absolute;
+    bottom: 30px;
+    left: 320px;
+    background-color: #222;
+    z-index: -9990;
+    box-shadow: 0 0 10px #222, 0 0 5px #222, 0 0 2px #222, 0 0 1px #222;
+  }
+  h1 {
+    margin: -25px 0 -5px;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 100px;
+    letter-spacing: 50px;
+    color: #f90000;
+    text-shadow: 0 0 1px #ff1919, 0 0 2px #ff1919, 0 0 6px #ff1919, 0 0 12px #ff1919;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #db0808;
+  }
+  h2 {
+    margin: 0;
+    padding: 0;
+    line-height: 70px;
+    font-family: 'League Script', cursive;
+    font-size: 80px;
+    color: #14a5ff;
+    text-shadow: 0 0 1px #22cef9, 0 0 2px #22cef9, 0 0 6px #22cef9, 0 0 12px #22cef9;
+  }
+/* 
+Code to reference
+  <div id="container">
+  <div id="border"></div>
+  <div id="blocker-1"></div>
+  <div id="blocker-2"></div>
+  <h2>Drink More</h2>
+  <h1>LOCAL</h1>
+  <h2>Beer</h2>
+</div> */
+  

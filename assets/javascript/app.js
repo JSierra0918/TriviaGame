@@ -54,21 +54,21 @@ var question7 = {
 var questionsArray = [question1, question2, question3];
 var questionArrayLength = questionsArray.length;
 var questionArrayRandom;
-var totalQuestions = 10;
+var totalQuestions;
 var questionsRight = 0;
 var questionsWrong = 0;
 var timeCount = 30;
 var timerID;
 
 
-for (var i = 0; i < totalQuestions.length; i++) {
-
-}
-
+//reset and play game from beginning
 function reset() {
-    var totalQuestions = 10;
-    questionsArray = [question1, question2, question3];
-
+    var totalQuestions = 0;
+    questionsArray = [question1, question2, question3,question4, question5, question6,question7];
+    $(".img-container").empty();
+    generateQuestion();
+    onClick();
+    timerID = setInterval(timerCountDown, 1000);
 }
 
 
@@ -129,13 +129,16 @@ function transition() {
    transitionImage
         .addClass("transition-image")
         .attr("src", questionArrayRandom.img);
-    console.log(questionArrayRandom.img);
+    
     $(".img-container").append(transitionImage);
     //show correct answer or wrong answer then go into generate next question.
 
     //remove ansers
     $(".answer").remove();
     $(".question-title").remove();
+
+    //check if user finished questions
+    winningCondition();
 
     setTimeout(nextQuestion, 2000);
     //change all references of nextQuestion to transtion
@@ -189,6 +192,25 @@ function timerCountDown() {
     }
 }
 
+function winningCondition() {
+    totalQuestions = questionsArray.length;
+
+    console.log("total questions: " + totalQuestions + "questionArray: " + questionsArray.length);
+    if (totalQuestions === 0){
+        var winDiv = $("<div>");
+        winDiv.addClass("win-div");
+        winDiv.text("The game is finished!  You got this many right: " +questionsRight + " and this many wrong: " + questionsWrong);
+
+        $(".img-container").append(winDiv);
+
+        var resetButton = $("<div>");
+        resetButton.addClass("reset-button");
+        resetButton.text("Play again");
+
+        $(".img-container").append(resetButton);
+    }
+}
+
 //Click event with winning condition
 function onClick() {
     $(".answer").on("click", function () {
@@ -209,6 +231,8 @@ function onClick() {
         console.log("click");
     });
 }
+
+$(document).on("click",".reset-button",reset);
 
 
 //Generate Question

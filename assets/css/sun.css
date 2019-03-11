@@ -1,0 +1,98 @@
+html,
+body {
+  min-height: 100vh;
+}
+
+:root {
+  --sky-top: #206;
+  --sky-bottom: #609;
+  
+  --sun-size: 400px;
+  --sun-top: #f0c;
+  --sun-bottom: #80f;
+  --sun-highlight: #f00;
+  --sun-glow: #9006;
+}
+
+body {
+  background-image: linear-gradient(to bottom, var(--sky-top), var(--sky-bottom));
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.sun__container {
+  /* Container Size */
+  display: inline-block;
+  --size: var(--sun-size);
+  width: var(--size);
+  height: var(--size);
+
+  /* Container Effects */
+  filter: drop-shadow(0px 8px 16px var(--sun-glow)) drop-shadow(0px 8px 16px #90f);
+  will-change: opacity;
+  
+  /* Container Position */
+  padding: 32px;
+}
+
+.sun,
+.sun:after
+{
+  /* Shape */
+  border-radius: 100%;
+  overflow: hidden;
+  --size: 200px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  /* Colors */
+  background-color: var(--sun-top);
+  background-image: linear-gradient(to bottom, transparent, var(--sun-bottom));
+
+  /* Lines */
+  --line1-start: 2%;
+  --line1-end: 5;
+  --line2-start: 10%;
+  --line2-end: 5;
+  --line3-start: 19%;
+  --line3-end: 4;
+  --line4-start: 27%;
+  --line4-end: 4;
+  --line5-start: 35%;
+  --line5-end: 3;
+  --line6-start: 42%;
+  --line6-end: 2;
+  --line7-start: 48%;
+  --line7-end: 2;
+  --line8-start: 54%;
+  --line8-end: 1;
+  --line9-start: 59%;
+  --line9-end: 0.5;
+
+-webkit-mask-image: 
+  linear-gradient(to top,
+  #000 0%,
+  #000 var(--line1-start), transparent var(--line1-start), transparent calc(var(--line1-start) + (var(--line1-end) * 1%)), #000 calc(var(--line1-start) + (var(--line1-end) * 1%)),
+  #000 var(--line2-start), transparent var(--line2-start), transparent calc(var(--line2-start) + (var(--line2-end) * 1%)), #000 calc(var(--line2-start) + (var(--line2-end) * 1%)),
+  #000 var(--line3-start), transparent var(--line3-start), transparent calc(var(--line3-start) + (var(--line3-end) * 1%)), #000 calc(var(--line3-start) + (var(--line3-end) * 1%)),
+  #000 var(--line4-start), transparent var(--line4-start), transparent calc(var(--line4-start) + (var(--line4-end) * 1%)), #000 calc(var(--line4-start) + (var(--line4-end) * 1%)),
+  #000 var(--line5-start), transparent var(--line5-start), transparent calc(var(--line5-start) + (var(--line5-end) * 1%)), #000 calc(var(--line5-start) + (var(--line5-end) * 1%)),
+  #000 var(--line6-start), transparent var(--line6-start), transparent calc(var(--line6-start) + (var(--line6-end) * 1%)), #000 calc(var(--line6-start) + (var(--line6-end) * 1%)),
+  #000 var(--line7-start), transparent var(--line7-start), transparent calc(var(--line7-start) + (var(--line7-end) * 1%)), #000 calc(var(--line7-start) + (var(--line7-end) * 1%)),
+  #000 var(--line8-start), transparent var(--line8-start), transparent calc(var(--line8-start) + (var(--line8-end) * 1%)), #000 calc(var(--line8-start) + (var(--line8-end) * 1%)),
+  #000 var(--line9-start), transparent var(--line9-start), transparent calc(var(--line9-start) + (var(--line9-end) * 1%)), #000 calc(var(--line9-start) + (var(--line9-end) * 1%)),
+  #000 100%
+  );
+}
+
+.sun:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  filter: blur(48px);
+  background-color: var(--sun-highlight);
+}

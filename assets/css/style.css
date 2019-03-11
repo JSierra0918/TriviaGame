@@ -1,11 +1,15 @@
+@font-face { font-family: Steamster; src: url('../font/Streamster.ttf'); }
+@font-face { font-family: Audiowide; src: url('../font/Audiowide-Regular.ttf'); }
+@font-face { font-family: Axis; src: url('../font/Axis\ Extrabold.otf'); }
+
 body {
     font-size: 16px;
+    background: linear-gradient( #206,  #609);
+    /* background: linear-gradient( #206,  #609); */
+    color: white;
+    font-family: Audiowide, sans-serif;
+    height: 100vh;
 }
-
-.container {
-    
-}
-
 
 .header-flex {
     display: flex;
@@ -13,24 +17,82 @@ body {
     justify-content: center;
 }
 
-.header-flex h1 {
-    font-size: 10vw;
-    flex: 3;
-    font-family: 'Audiowide', cursive;
+.title-image {
+    width: 60vw;
+}
+
+/* h1 {
+    font-size: 72px;
+    background: -webkit-linear-gradient(#eee, #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  } */
+
+
+#trivial {
+    font-size: 72px;
+    font-family: "Streamster";
+    color: #f409af;
+    transform: skewY(35deg);
+    z-index: 4;
+}
+
+#trivial::after {
+    box-shadow:
+        0 0 60px 30px #a70761,
+        /* inner white */
+        0 0 100px 60px #ff00fc,
+        /* middle magenta */
+        inset 60px 0 120px #f0f,
+        /* left magenta */
+        inset -60px 0 120px #0ff;
+    /* right cyan */
+}
+
+.mid-flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
 }
 
 .number-container {
-    background: pink;
-    height: 20vw;
-    width: 30vw;
+    
+    height: 10vw;
+    width: 20vw;
     text-align: center;
+    margin-right: 5vw;
+    position: relative;
+    order: 2;
+    border: 3px;
+    background: black;
+    box-shadow: 0 0 1px #b3ff51, 
+                0 0 2px #b3ff51,
+                0 0 6px #b3ff51,
+                0 0 12px #b3ff51,
+                inset 0 0 1px #b3ff51,
+                inset 0 0 2px #b3ff51,
+                inset 0 0 6px #b3ff51, 
+                inset 0 0 12px #b3ff51;
+}
+
+.number-container h6 {
+    align-self: center;
+    font-size: 2vw;
+}
+
+#timeID{
+    font-size: 6vw;
+    align-self: flex-end;
+
 }
 
 .body-flex {
     display: flex;
-    justify-content: center;
+    
     align-items: center;
     flex-direction: column;
+    flex-grow: 3;
 }
 
 .img-container {
@@ -39,20 +101,30 @@ body {
 
 .transition-image {
     align-self: center;
-    width: 100px;
-    height: auto;;
+    width: 400px;
+    height: auto;
+    
 }
 
 .question-container {
-    background: rebeccapurple;
+    background: #a043b5;
     text-align: center;
-    width: 80vw;
-    margin-top: 5vh;
+    width: 60vw;
+    flex-grow: 2;
+    /* border: 5px solid #FFEB3B; */
+    border: 5px solid #ffffff;
+    padding-bottom: 20px;
+    box-shadow:  0 0 1px #eaee0e, 
+                0 0 2px #eaee0e,
+                0 0 66px #eaee0e,
+                0 0 12px #eaee0e,
 }
 
 .question-title {
-    font-size: 5vw;
+    font-size: 3vw;
     font-weight: bold;
+    padding: 20px;
+    font-family: Axis, sans-serif;
 }
 
 .answer {
@@ -60,9 +132,32 @@ body {
     color: red;
     background: white;
     border: 1px solid black;
+    vertical-align: middle;
+    height: 5vh;
 }
 
 .answer:hover {
     background: pink;
     cursor: pointer;
+}
+
+.win-div {
+    top: 170px;
+    position: relative;
+}
+
+.reset-button {
+    
+    border: 1px #E91E63 solid;
+    margin: 20px auto;
+    width: 200px;
+    text-align: center;
+    transition: all 1s;
+}
+
+.reset-button:hover {
+    cursor: pointer;
+    background: #ff5722;
+    color: white;
+    
 }
