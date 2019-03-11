@@ -2,51 +2,58 @@
 
 var question1 = {
     question: "Where did Forrest Gump get shot?",
-    answer: ["Buttocks", "Leg", "Hans", "Back"],
+    answer: ["Buttocks", "Leg", "Hands", "Back"],
     correct: "Buttocks",
-    img: "./assets/images/buttocks.gif"
+    img: "./assets/images/buttocks.gif",
+    trivia : "Forrest Gump was shot in buttocks trying to save Lieutenant Dan"
 };
 
 var question2 = {
     question: "What did Conan the Barbarian do to get all his muscles?",
     answer: ["Swing his sword", "Lift massive bolders", "Wheel of pain", "Run"],
     correct: "Wheel of pain",
-    img: "./assets/images/wheelofpain.gif"
+    img: "./assets/images/wheelofpain.gif",
+    trivia : "After Conan's family was brutaly murdered by Thulsa Doom, is enslaved and forced work the Wheel of Pain."
 };
 
 var question3 = {
-    question: "Benjamin Budford tells Forrest how many ways can shirmp be prepared?",
+    question: "Benjamin Buford Blue tells Forrest how many ways can shirmp be prepared?",
     answer: ["45", "35", "21", "18"],
     correct: "21",
-    img: "./assets/images/shrimp.gif"
+    img: "./assets/images/shrimp.gif",
+    trivia : "After referering to shrimp as the fruit of the sea, Benjamin Buford Blue a.k.a 'Bubba' proceeds to tell Forrest 21 ways of preparing shrimp." 
 };
 
 var question4 = {
     question: "what's an action hero's greatest strength?",
     answer: ["Grip strength", "One liners", "Always able to survie", "Charming looks"],
     correct: "Grip strength",
-    img: "./assets/images/hero.gif"
+    img: "./assets/images/hero.gif",
+    trivia : "Grip strength is the single reason action heros survive every ordeal.  Don't believe me?  Pay attention to how much they rely on the super human grip strength."
 };
 
 var question5 = {
     question: "Lloyd Christmas and Harry Dunne thought Aspen whas in what state?",
     answer: ["Colorado", "California", "Washington", "Minnesota"],
     correct:  "California",
-    img: "./assets/images/dumb.gif"
+    img: "./assets/images/dumb.gif",
+    trivia : `When Mary tells Lloyd she's going to Aspen he says, "Mmm, California, beautiful!"'.`
 };
 
 var question6 = {
     question: "How many shots did John Wick fire in his house?",
     answer: ["20", "19", "30", "5"],
     correct:  "20",
-    img: "./assets/images/john.gif"
+    img: "./assets/images/john.gif",
+    trivia : "Out of the 20 shots fired, John misses only 1."
 };
 
 var question7 = {
-    question: "How old was Scarlet Johansson in Lost in Translation?",
+    question: "How old was Scarlett Johansson in Lost in Translation?",
     answer: ["18", "21", "16", "27"],
     correct:  "18",
-    img: "./assets/images/scar.gif"
+    img: "./assets/images/scar.gif",
+    trivia: "Scarlett Johansson was 18 when she did Lost in Translation."
 };
 
 //initialize variables
@@ -55,6 +62,7 @@ var questionsArray = [question1, question2, question3];
 var questionArrayLength = questionsArray.length;
 var questionArrayRandom;
 var totalQuestions;
+var storedArray = [];
 var questionsRight = 0;
 var questionsWrong = 0;
 var timeCount = 30;
@@ -138,7 +146,7 @@ function transition() {
     $(".question-title").remove();
 
     //check if user finished questions
-    winningCondition();
+    setTimeout(winningCondition,3000);
 
     setTimeout(nextQuestion, 2000);
     //change all references of nextQuestion to transtion
@@ -149,7 +157,7 @@ function congrats() {
     var congrats = $("<h1>");
     congrats
         .addClass("correct")
-        .text("Correct! The Answer was " + questionArrayRandom.correct);
+        .text(`Correct! \n ${questionArrayRandom.trivia}`);
 
     $(".img-container").append(congrats);
 }
@@ -158,7 +166,7 @@ function dang() {
     var dang = $("<h1>");
     dang
         .addClass("incorrect")
-        .text("Dang! The Answer was " + questionArrayRandom.correct);
+        .text(`Incorrect! <br>  ${questionArrayRandom.trivia}`);
 
     $(".img-container").append(dang);
 }
@@ -199,7 +207,7 @@ function winningCondition() {
     if (totalQuestions === 0){
         var winDiv = $("<div>");
         winDiv.addClass("win-div");
-        winDiv.text("The game is finished!  You got this many right: " +questionsRight + " and this many wrong: " + questionsWrong);
+        winDiv.html("The game is finished! <br> You got this many right: " +questionsRight + " <br> this many wrong: " + questionsWrong);
 
         $(".img-container").append(winDiv);
 

@@ -4,8 +4,9 @@
 
 body {
     font-size: 16px;
-    background: linear-gradient( #206,  #609);
     /* background: linear-gradient( #206,  #609); */
+    background: linear-gradient( #206,  #609);
+    /* background: black; */
     color: white;
     font-family: Audiowide, sans-serif;
     height: 100vh;
@@ -62,10 +63,10 @@ body {
     width: 20vw;
     text-align: center;
     margin-right: 5vw;
-    position: relative;
     order: 2;
-    border: 3px;
-    background: black;
+    border: 3px solid #0cd808;
+    border-radius: 10px;
+    background-color: #222;
     box-shadow: 0 0 1px #b3ff51, 
                 0 0 2px #b3ff51,
                 0 0 6px #b3ff51,
@@ -74,16 +75,27 @@ body {
                 inset 0 0 2px #b3ff51,
                 inset 0 0 6px #b3ff51, 
                 inset 0 0 12px #b3ff51;
+    z-index: -9990;
 }
 
 .number-container h6 {
     align-self: center;
     font-size: 2vw;
+    margin-top: 1vh;
+    font-family: 'League Script', cursive;
+    color: #14a5ff;
+    text-shadow: 0 0 1px #22cef9, 0 0 2px #22cef9, 0 0 6px #22cef9, 0 0 6px #22cef9;
+    
 }
 
-#timeID{
+#timeID {
     font-size: 6vw;
     align-self: flex-end;
+    letter-spacing: 10px;
+    color: #f90000;
+    text-shadow: 0 0 1px #ff1919, 0 0 2px #ff1919, 0 0 6px #ff1919, 0 0 12px #ff1919;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #db0808;
 
 }
 
@@ -95,16 +107,7 @@ body {
     flex-grow: 3;
 }
 
-.img-container {
-    align-content: center;
-}
 
-.transition-image {
-    align-self: center;
-    width: 400px;
-    height: auto;
-    
-}
 
 .question-container {
     background: #a043b5;
@@ -114,10 +117,7 @@ body {
     /* border: 5px solid #FFEB3B; */
     border: 5px solid #ffffff;
     padding-bottom: 20px;
-    box-shadow:  0 0 1px #eaee0e, 
-                0 0 2px #eaee0e,
-                0 0 66px #eaee0e,
-                0 0 12px #eaee0e,
+    box-shadow:  0 0 20px red, 0 0 50px blue;
 }
 
 .question-title {
@@ -133,7 +133,7 @@ body {
     background: white;
     border: 1px solid black;
     vertical-align: middle;
-    height: 5vh;
+    padding: 30px;
 }
 
 .answer:hover {
@@ -141,9 +141,27 @@ body {
     cursor: pointer;
 }
 
+.incorrect, .correct {
+    font-size: 1.5vw;
+    margin-top: 30px;
+}
+
+.img-container {
+    align-content: center;
+}
+
+
+.transition-image {
+    align-self: center;
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    margin-top: 50px;
+    
+}
+
 .win-div {
     top: 170px;
-    position: relative;
 }
 
 .reset-button {
@@ -160,4 +178,10 @@ body {
     background: #ff5722;
     color: white;
     
+}
+
+.test-image {
+    align-self: center;
+    width: 400px;
+    height: auto;
 }

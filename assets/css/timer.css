@@ -44,7 +44,7 @@ body {
     margin: -25px 0 -5px;
     padding: 0;
     font-family: 'Quicksand', sans-serif;
-    font-size: 100px;
+    font-size: 1vw;
     letter-spacing: 50px;
     color: #f90000;
     text-shadow: 0 0 1px #ff1919, 0 0 2px #ff1919, 0 0 6px #ff1919, 0 0 12px #ff1919;
