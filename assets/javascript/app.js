@@ -102,9 +102,6 @@ function generateQuestion() {
     //generate random answers
     for (var i = 0; i < answerLength; i++) {
 
-        console.log(questionArrayRandom.answer);
-
-
         //reinitiliaze on every loop
         var answerElement = $("<div>");
         var randomIndex = Math.floor(Math.random() * questionArrayRandom.answer.length);
@@ -146,7 +143,7 @@ function transition() {
     $(".question-title").remove();
 
     //check if user finished questions
-    setTimeout(winningCondition,3000);
+    winningCondition();
 
     setTimeout(nextQuestion, 2000);
     //change all references of nextQuestion to transtion
@@ -166,7 +163,7 @@ function dang() {
     var dang = $("<h1>");
     dang
         .addClass("incorrect")
-        .text(`Incorrect! <br>  ${questionArrayRandom.trivia}`);
+        .text(`Incorrect! <br> ${questionArrayRandom.trivia}`);
 
     $(".img-container").append(dang);
 }
@@ -207,7 +204,7 @@ function winningCondition() {
     if (totalQuestions === 0){
         var winDiv = $("<div>");
         winDiv.addClass("win-div");
-        winDiv.html("The game is finished! <br> You got this many right: " +questionsRight + " <br> this many wrong: " + questionsWrong);
+        winDiv.html("<span id='win-text'>The game is finished!</span> <br> You got <span class ='win-count'> " +questionsRight + "</span> Right! " +  "<br> You got <span class='lose-count'>" + questionsWrong + "</span> wrong!");
 
         $(".img-container").append(winDiv);
 
