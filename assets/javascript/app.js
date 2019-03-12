@@ -3,6 +3,7 @@
 var question1 = {
     question: "Where did Forrest Gump get shot?",
     answer: ["Buttocks", "Leg", "Hands", "Back"],
+    answerCopy: ["Buttocks", "Leg", "Hands", "Back"],
     correct: "Buttocks",
     img: "./assets/images/buttocks.gif",
     trivia : "Forrest Gump was shot in buttocks trying to save Lieutenant Dan"
@@ -11,6 +12,7 @@ var question1 = {
 var question2 = {
     question: "What did Conan the Barbarian do to get all his muscles?",
     answer: ["Swing his sword", "Lift massive bolders", "Wheel of pain", "Run"],
+    answerCopy: ["Swing his sword", "Lift massive bolders", "Wheel of pain", "Run"],
     correct: "Wheel of pain",
     img: "./assets/images/wheelofpain.gif",
     trivia : "After Conan's family was brutaly murdered by Thulsa Doom, is enslaved and forced work the Wheel of Pain."
@@ -19,6 +21,7 @@ var question2 = {
 var question3 = {
     question: "Benjamin Buford Blue tells Forrest how many ways can shirmp be prepared?",
     answer: ["45", "35", "21", "18"],
+    answerCopy: ["45", "35", "21", "18"],
     correct: "21",
     img: "./assets/images/shrimp.gif",
     trivia : "After referering to shrimp as the fruit of the sea, Benjamin Buford Blue a.k.a 'Bubba' proceeds to tell Forrest 21 ways of preparing shrimp." 
@@ -27,6 +30,7 @@ var question3 = {
 var question4 = {
     question: "what's an action hero's greatest strength?",
     answer: ["Grip strength", "One liners", "Always able to survie", "Charming looks"],
+    answerCopy: ["Grip strength", "One liners", "Always able to survie", "Charming looks"],
     correct: "Grip strength",
     img: "./assets/images/hero.gif",
     trivia : "Grip strength is the single reason action heros survive every ordeal.  Don't believe me?  Pay attention to how much they rely on the super human grip strength."
@@ -35,6 +39,7 @@ var question4 = {
 var question5 = {
     question: "Lloyd Christmas and Harry Dunne thought Aspen whas in what state?",
     answer: ["Colorado", "California", "Washington", "Minnesota"],
+    answerCopy: ["Colorado", "California", "Washington", "Minnesota"],
     correct:  "California",
     img: "./assets/images/dumb.gif",
     trivia : `When Mary tells Lloyd she's going to Aspen he says, "Mmm, California, beautiful!"'.`
@@ -43,6 +48,7 @@ var question5 = {
 var question6 = {
     question: "How many shots did John Wick fire in his house?",
     answer: ["20", "19", "30", "5"],
+    answerCopy: ["20", "19", "30", "5"],
     correct:  "20",
     img: "./assets/images/john.gif",
     trivia : "Out of the 20 shots fired, John misses only 1."
@@ -51,6 +57,7 @@ var question6 = {
 var question7 = {
     question: "How old was Scarlett Johansson in Lost in Translation?",
     answer: ["18", "21", "16", "27"],
+    answerCopy: ["18", "21", "16", "27"],
     correct:  "18",
     img: "./assets/images/scar.gif",
     trivia: "Scarlett Johansson was 18 when she did Lost in Translation."
@@ -58,7 +65,8 @@ var question7 = {
 
 //initialize variables
 
-var questionsArray = [question1, question2, question3];
+var questionsArray = [question1, question2, question3, question4, question5, question6,question7];
+
 var questionArrayLength = questionsArray.length;
 var questionArrayRandom;
 var totalQuestions;
@@ -73,12 +81,20 @@ var timerID;
 function reset() {
     var totalQuestions = 0;
     questionsArray = [question1, question2, question3,question4, question5, question6,question7];
+
     $(".img-container").empty();
+    resetAnswers(questionsArray);
     generateQuestion();
     onClick();
     timerID = setInterval(timerCountDown, 1000);
 }
 
+function resetAnswers (array) {
+    
+    array.forEach(function (question, i, arr) {
+        question.answer = question.answerCopy;
+    });
+}
 
 function generateQuestion() {
     //Create a title element
@@ -145,7 +161,7 @@ function transition() {
     //check if user finished questions
     winningCondition();
 
-    setTimeout(nextQuestion, 2000);
+    setTimeout(nextQuestion, 4000);
     //change all references of nextQuestion to transtion
 
 }
@@ -244,5 +260,3 @@ $(document).on("click",".reset-button",reset);
 generateQuestion();
 onClick();
 timerID = setInterval(timerCountDown, 1000);
-
-
