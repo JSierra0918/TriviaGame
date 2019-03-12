@@ -91,7 +91,7 @@ body {
 
 .number-container h6 {
     align-self: center;
-    font-size: 2vw;
+    font-size: 1.3vw;
     margin-top: 1vh;
     font-family: 'League Script', cursive;
     color: #14a5ff;
@@ -117,8 +117,6 @@ body {
     flex-grow: 3;
 }
 
-
-
 .question-container {
     background: #a043b5;
     text-align: center;
@@ -131,7 +129,7 @@ body {
 }
 
 .question-title {
-    font-size: 3vw;
+    font-size: 2vw;
     font-weight: bold;
     padding: 20px;
     font-family: Axis, sans-serif;
@@ -153,8 +151,26 @@ body {
 
 .incorrect,
 .correct {
-    font-size: 1.5vw;
     margin-top: 30px;
+}
+
+#incorrectID, #correctID {
+    animation: color-change 5s infinite;
+    text-decoration: underline;
+    font-size: 3vw;
+
+}
+
+.trivia {
+    font-size: 1.5vw;
+    margin-top: 10px;
+}
+
+
+@keyframes color-change {
+    0% { color: #e4f120; }
+    50% { color: #f7f0eb; }
+    100% { color: #e4f120; }
 }
 
 .img-container {
@@ -175,8 +191,6 @@ body {
     margin-top: 50px;
     font-size: 2vw;
 }
-
-#win-text {}
 
 .win-count {
     font-size: 5vw;

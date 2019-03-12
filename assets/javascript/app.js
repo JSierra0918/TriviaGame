@@ -167,19 +167,12 @@ function transition() {
 }
 
 function congrats() {
-    var congrats = $("<h1>");
-    congrats
-        .addClass("correct")
-        .text(`Correct! \n ${questionArrayRandom.trivia}`);
-
+    var congrats = $(`<div class="correct"> <h1  id="correctID">Correct!<br></h1> <p class="trivia">${questionArrayRandom.trivia}</p></div>`);
     $(".img-container").append(congrats);
 }
 
 function dang() {
-    var dang = $("<h1>");
-    dang
-        .addClass("incorrect")
-        .text(`Incorrect! <br> ${questionArrayRandom.trivia}`);
+    var dang = $(`<div class="incorrect"><h1  id="incorrectID">Incorrect!<br></h1> <p class="trivia">${questionArrayRandom.trivia}</p></div>`);
 
     $(".img-container").append(dang);
 }
@@ -217,6 +210,7 @@ function winningCondition() {
     totalQuestions = questionsArray.length;
 
     console.log("total questions: " + totalQuestions + "questionArray: " + questionsArray.length);
+
     if (totalQuestions === 0){
         var winDiv = $("<div>");
         winDiv.addClass("win-div");
