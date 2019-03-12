@@ -70,7 +70,6 @@ var questionsArray = [question1, question2, question3, question4, question5, que
 var questionArrayLength = questionsArray.length;
 var questionArrayRandom;
 var totalQuestions;
-var storedArray = [];
 var questionsRight = 0;
 var questionsWrong = 0;
 var timeCount = 30;
@@ -79,8 +78,11 @@ var timerID;
 
 //reset and play game from beginning
 function reset() {
-    var totalQuestions = 0;
+    totalQuestions = 0;
     questionsArray = [question1, question2, question3,question4, question5, question6,question7];
+    questionsRight = 0;
+    questionsWrong = 0;
+    timeCount = 30
 
     $(".img-container").empty();
     resetAnswers(questionsArray);
@@ -211,6 +213,12 @@ function winningCondition() {
 
     console.log("total questions: " + totalQuestions + "questionArray: " + questionsArray.length);
 
+    setTimeout(winText, 4200);
+
+}
+
+function winText(){
+
     if (totalQuestions === 0){
         var winDiv = $("<div>");
         winDiv.addClass("win-div");
@@ -224,6 +232,7 @@ function winningCondition() {
 
         $(".img-container").append(resetButton);
     }
+
 }
 
 //Click event with winning condition
